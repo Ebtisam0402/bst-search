@@ -13,7 +13,7 @@ public class BstSearchTest {
         assertTrue(result);
     }
 
-     @Test
+    @Test
     public void notContainsValue(){
         BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(10);
         root.left = new BinaryTreeNode<Integer>(5);
@@ -22,5 +22,23 @@ public class BstSearchTest {
         boolean result = (BstSearch.contains(root,8));
 
         assertFalse(result);
+    }
+
+    @Test
+    public void emptyTree(){
+        BinaryTreeNode<Integer> root = null;
+        
+        boolean result = (BstSearch.contains(root,8));
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void nullTarget(){
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(10);
+        
+        assertThrows(NullPointerException.class, () -> {
+            BstSearch.contains(root,null);
+        });
     }
 }
